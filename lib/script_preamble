@@ -2,7 +2,8 @@
 # -*- mode: shell-script -*-
 # vim:ft=sh
 
-GITURL_TOOL=${GITURL_TOOL#"${GITURL_TOOL%%[! ]*}"}
+GITURL_TOOL=${GITURL_TOOL#"${GITURL_TOOL%%[![:space:]]*}"} # leading white space
+GITURL_TOOL=${GITURL_TOOL%"${GITURL_TOOL##*[![:space:]]}"} # trailing white space
 
 #
 # Functions
