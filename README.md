@@ -20,13 +20,17 @@ Compare length of the above example giturl to the data it stores:
 https://github.com/zdharma/git-urlmaster
 ```
 
+## Screenshot
+
+![Screenshot](https://raw.githubusercontent.com/zdharma/git-url/images/git-url.png)
+
 # Installation
 
-Clone and run `make install`. Default install location is `/usr/local`. Can be overriden
-by setting `PREFIX`, e.g. `make install PREFIX=/opt`.
+Recursively clone and run `make install`. Default install location is `/usr/local`. It
+can be overriden by setting `PREFIX`, e.g. `make install PREFIX=/opt`.
 
 ```sh
-git clone https://github.com/zdharma/git-url
+git clone --recursive https://github.com/zdharma/git-url
 cd git-url
 make install
 ```
@@ -39,3 +43,7 @@ zplugin light zdharma/git-url
 ```
 
 To update, execute `zplugin update zdharma/git-url`. `$ZPFX` is `~/.zplugin/polaris` by default.
+
+The project uses two subprojects, one of them written in C++, second one in Zshell. They are the
+computation backends, and any of the two will work (choose with `export GITURL_TOOL=zgiturl` or
+`...=cgiturl`).
