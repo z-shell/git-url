@@ -25,7 +25,7 @@ REGEX='^[0-9a-zA-ZµºÀ-ÖØ-áãäæ-öøú-ÿĀ-ƔƖ-ơƤ-ǃǍ-Ǳǳ-ǵǷ-Ɉɋ
 
 # Input given?
 if [[ -z "$INPUT1" ]]; then
-    echo "Please provide gitu://... URL (see git uclone -h for help)."
+    echo "Please provide gitu://... URL (see git guclone -h for help)."
     exit 1
 fi
 
@@ -33,7 +33,7 @@ fi
 if [[ ! "$INPUT1" =~ $REGEX ]]; then
     echo "Please provide gitu://... (or //... or just ... part) URL as last argument,"
     echo "it should consist only from unicode letters. If last argument is the target"
-    echo "directory, then prefix gitu:// or // is required. See git uclone -h for help."
+    echo "directory, then prefix gitu:// or // is required. See git guclone -h for help."
     exit 1
 fi
 

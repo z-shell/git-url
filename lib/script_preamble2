@@ -31,12 +31,12 @@ BG_CYAN="\033[46m"
 #
 
 show_help() {
-    echo "git uclone [regular clone options] gitu://...gcode... [target directory]"
+    echo "git guclone [regular clone options] gitu://...gcode... [target directory]"
     echo ""
-    echo "git uclone will decode the git-url, then do normal clone, and then checkout the encoded"
+    echo "git guclone will decode the git-url, then do normal clone, and then checkout the encoded"
     echo "revision. It will also display information on any encoded paths."
     echo ""
-    echo "git uclone recognizes also //...gcode... and ...gcode... syntaxes (gitu:// is optional, etc.)."
+    echo "git guclone recognizes also //...gcode... and ...gcode... syntaxes (gitu:// is optional, etc.)."
     echo "However, when passing the target directory, then at least // prefix is required (or gitu://)."
 }
 
