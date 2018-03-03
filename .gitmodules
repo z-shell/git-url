@@ -1,6 +1,8 @@
 [submodule "giturl"]
 	path = giturl
 	url = https://github.com/psprint/giturl
+        ignore = untracked
 [submodule "cgiturl"]
 	path = cgiturl
 	url = https://github.com/psprint/cgiturl
+        ignore = untracked
