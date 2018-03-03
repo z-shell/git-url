@@ -10,14 +10,16 @@ GITURL_TOOL=${GITURL_TOOL%"${GITURL_TOOL##*[![:space:]]}"} # trailing white spac
 #
 
 show_help() {
-    echo "git url [-h] [-q] [-r <revision>] [gitu://...]"
+    echo "git url [-h] [-q] [-r <revision>] [-u <url>] [gitu://...]"
     echo ""
     echo "-h    show this message"
     echo "-q    quiet mode (less output)"
     echo "-n    no ansi colors"
     echo "-r    use custom revision like 'master' or '3a7abce' instead of fetching it from repository"
+    echo "-u    use custom URL instead of retrieving fetch-URL from repository"
     echo ""
-    echo "If gitu://... is passed, it will be decoded."
+    echo "If gitu://...gcode... is passed, it will be decoded and no encoding will be done."
+    echo "git url recognizes also //...gcode... and ...gcode... syntaxes (gitu:// is optional)."
 }
 
 #
@@ -29,8 +31,9 @@ HELP=""
 QUIET=""
 NOANSI=""
 REVISION=""
+INURL=""
 
-while getopts "hqnr:" opt; do
+while getopts "hqnr:u:" opt; do
     case "$opt" in
         \?)
             echo "Error: incorrect option, aborting."
@@ -47,6 +50,8 @@ while getopts "hqnr:" opt; do
         n)  NOANSI="-n"
             ;;
         r)  REVISION="$OPTARG"
+            ;;
+        u)  INURL="$OPTARG"
             ;;
     esac
 done
