@@ -1,0 +1,7 @@
+# -*- mode: shell-script -*-
+# vim:ft=sh
+
+check_for_repo
+
+declare TOOL
+choose_tool

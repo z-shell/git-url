@@ -15,8 +15,10 @@ cgiturl:
 	cd cgiturl && cmake -DCMAKE_INSTALL_PREFIX=$(PREFIX) .
 	make -C cgiturl
 
-git-url:
-	@echo Hello World
+git-url: lib/script_preamble lib/common git-url.main
+	cat lib/script_preamble > git-url
+	cat lib/common git-url.main | egrep -v '(# vim|# -)' >> git-url
+	chmod a+x git-url
 
 install: zgiturl cgiturl git-url
 	make -C cgiturl install
@@ -34,5 +36,8 @@ uninstall:
 	[ -d $(DOC_DIR) ] && rmdir $(DOC_DIR) || true
 	rm -f $(SHARE_DIR)/*
 	[ -d $(SHARE_DIR) ] && rmdir $(SHARE_DIR) || true
+
+clean:
+	rm -f git-url
 
 .PHONY: all install uninstall zgiturl cgiturl

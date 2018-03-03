@@ -1,0 +1,33 @@
+# -*- mode: shell-script -*-
+# vim:ft=sh
+
+check_for_repo() {
+    local code
+    git rev-parse --show-toplevel > /dev/null 2>&1
+    code=$?
+    if [[ $code -ne 0 ]]; then
+	echo 'No git repository detected, aborting' >&2
+	exit $code
+    fi
+}
+
+choose_tool() {
+    if hash cgiturl 2>/dev/null 1>&2; then
+        TOOL=cgiturl
+    elif hash zgiturl 2>/dev/null 1>&2; then
+        TOOL=zgiturl
+    else
+        echo "No \`cgiturl' nor \`zgiturl' command is available, aborting."
+        echo "The commands should be installed together with git-url."
+        exit 1
+    fi
+
+    if [[ -n "$GITURL_TOOL" && "$TOOL" != "$GITURL_TOOL" ]]; then
+        if ! hash "$GITURL_TOOL" 2>/dev/null 1>&2; then
+            echo "The requested git-url backend \`$GITURL_TOOL' isn't available, aborting."
+            echo "(backend requested by \$GITURL_TOOL variable)."
+            exit 1
+        fi
+        TOOL="$GITURL_TOOL"
+    fi
+}
