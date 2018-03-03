@@ -3,3 +3,44 @@
 # vim:ft=sh
 
 GITURL_TOOL=${GITURL_TOOL#"${GITURL_TOOL%%[! ]*}"}
+
+#
+# Functions
+#
+
+show_help() {
+    echo "git url [-h] [-q] [-r <revision>] [gitu://...]"
+    echo ""
+    echo "-h    show this message"
+    echo "-q    quiet mode (less output)"
+    echo "-r    use custom revision like 'master' or '3a7abce' instead of fetching it from repository"
+    echo ""
+    echo "If gitu://... is passed, it will be decoded."
+}
+
+#
+# Parse options
+#
+
+OPTIND=1
+HELP=""
+QUIET=""
+REVISION=""
+
+while getopts "hqr:" opt; do
+    case "$opt" in
+        h|\?)
+            show_help
+            exit 0
+            ;;
+        q)  QUIET="-q"
+            ;;
+        r)  REVISION="$OPTARG"
+            ;;
+    esac
+done
+
+shift $(( OPTIND-1 ))
+
+[[ "$1" = "--" ]] && shift
+

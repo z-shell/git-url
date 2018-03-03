@@ -15,11 +15,16 @@ get_repo_url
 URL="$REPLY"
 
 # Read current revision
-declare REF
-if ! get_ref; then
-    echo "Could not determine current ref / revision, aborting."
-    exit 1
+if [[ -z "$REVISION" ]]; then
+    declare REF
+    if ! get_ref; then
+        echo "Could not determine current ref / revision, aborting."
+        exit 1
+    fi
+    REF="$REPLY"
+else
+    REF="$REVISION"
 fi
-REF="$REPLY"
 
-"$TOOL" --revision "$REF" "$URL"
+# Run backend to generate git-url
+"$TOOL" $QUIET --revision "$REF" "$URL"
