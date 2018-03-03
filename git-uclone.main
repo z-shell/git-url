@@ -1,0 +1,37 @@
+# -*- mode: shell-script -*-
+# vim:ft=sh
+
+ARGUMENTS=( "$@" )
+INPUT="${ARGUMENTS[${#ARGUMENTS[@]}-1]}"
+INPUT="${INPUT#gitu://}"
+INPUT="${INPUT#//}"
+REGEX='^[0-9a-zA-ZµºÀ-ÖØ-áãäæ-öøú-ÿĀ-ƔƖ-ơƤ-ǃǍ-Ǳǳ-ǵǷ-Ɉɋ-ɏḀ-ẝẟ-ỹỻͻ-ͽΆΈΑ-ΡΣ-ΩΫ-ψϋ-ώϐ-ϒϔ-Ϡϥϧ-ϩϫ-ϲϵϷ-Ϲϻ-ϿЀ-џѡ-ѣѥѫѱ-ѳѵѷѻѽѿ-ҁҋ-ҟҡ-ҥҩ-ҳҵ-һӀ-ӌӎӐ-ӿא-דטך-מס-פ]+$'
+
+# Input given?
+if [[ -z "$INPUT" ]]; then
+    echo "Please provide gitu://... URL (see git uclone -h for help)."
+    exit 1
+fi
+
+# Proper input?
+if [[ ! "$INPUT" =~ $REGEX ]]; then
+    echo "Please provide gitu://... URL as last argument, it should consist"
+    echo "only from unicode letters (see git uclone -h for help)."
+    exit 1
+fi
+
+# Select backend
+declare TOOL
+choose_tool
+TOOL="$REPLY"
+
+"$TOOL" -qnd "$INPUT"
+
+# Read repository fetch URL
+declare URL
+
+# Read current revision
+declare REF
+
+# Read encoded path
+declare MYPATH

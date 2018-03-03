@@ -1,0 +1,29 @@
+#!/bin/bash
+# -*- mode: shell-script -*-
+# vim:ft=sh
+
+GITURL_TOOL=${GITURL_TOOL#"${GITURL_TOOL%%[![:space:]]*}"} # leading white space
+GITURL_TOOL=${GITURL_TOOL%"${GITURL_TOOL##*[![:space:]]}"} # trailing white space
+
+#
+# Functions
+#
+
+show_help() {
+    echo "git uclone [regular clone options] gitu://...gcode..."
+    echo ""
+    echo "git uclone will decode the git-url, then do normal clone, and then checkout the encoded"
+    echo "revision. It will also display information on any encoded paths."
+    echo ""
+    echo "git uclone recognizes also //...gcode... and ...gcode... syntaxes (gitu:// is optional, etc.)."
+}
+
+#
+# Parse options
+# Actually pass through them for regular clone
+#
+
+if [[ "$1" = "-h" ]]; then
+    show_help
+    exit 0
+fi
