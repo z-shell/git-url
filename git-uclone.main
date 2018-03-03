@@ -49,30 +49,40 @@ declare URL="${DATA%% /  *}"
 
 # Read current revision
 declare REF="${DATA##* /  rev:}"
-REF="${REF%% /  *}"
+if [[ "$REF" != "$DATA" ]]; then
+    REF="${REF%% /  *}"
+else
+    REF=""
+fi
 
 # Read encoded path
 declare MYPATH="${DATA##* /  file:}"
+[[ "$MYPATH" = "$DATA" ]] && MYPATH=""
 
 echo -en "${YELLOW}Cloning URL ${MAGENTA}${URL}"
 [[ -n "$REF" ]] && echo -en "${YELLOW} for revision ${GREEN}${REF}"
-[[ -n "$MYPATH" ]] && echo -en "${YELLOW} with pointed file(s) ${GREEN}${MYPATH}"
 echo -e ${RESET}
+[[ -n "$MYPATH" ]] && echo -e "${YELLOW}Pointed file(s): ${GREEN}${MYPATH}${RESET}"
+echo ""
 
 if ! git clone "${ARGUMENTS[@]}" "${URL}" ${DIRECTORY:+"$DIRECTORY"}; then
     echo -e "${YELLOW}Clone failed, error message is above, not proceeding further."
     exit 1
 fi
 
-if [[ -n "$REF" ]]; then
-    if [[ -z "$DIRECTORY" ]]; then
-        DIRECTORY="${URL##*/}"
-        DIRECTORY="${DIRECTORY%.git}"
-    fi
-
-    echo -e "${YELLOW}Checking out revision/reference ${GREEN}${REF}${YELLOW}...${RESET}"
-    cd "$DIRECTORY"
-    git checkout -q --progress "$REF"
-    get_ref
-    echo -e "HEAD is now at: ${RED}${REPLY}${RESET}"
+# Establish target directory for message and checkout
+if [[ -z "$DIRECTORY" ]]; then
+    DIRECTORY="${URL##*/}"
+    DIRECTORY="${DIRECTORY%.git}"
 fi
+
+# Perform checkout if needed
+if [[ -n "$REF" ]]; then
+    echo ""
+    echo -en "${YELLOW}Checking out revision/reference ${GREEN}${REF}${YELLOW}...${RESET}"
+    cd "$DIRECTORY"
+    git checkout -q --progress "$REF" && echo " OK" || echo " Failed"
+fi
+
+get_ref
+echo -e "HEAD is at: ${RED}${REPLY}${RESET}, created directory ${GREEN}${DIRECTORY}${RESET}"
