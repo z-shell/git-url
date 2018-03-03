@@ -21,3 +21,5 @@ if ! get_ref; then
     exit 1
 fi
 REF="$REPLY"
+
+"$TOOL" --revision "$REF" "$URL"
