@@ -23,22 +23,22 @@ check_for_repo() {
 
 choose_tool() {
     if hash cgiturl 2>/dev/null 1>&2; then
-        TOOL=cgiturl
+        REPLY=cgiturl
     elif hash zgiturl 2>/dev/null 1>&2; then
-        TOOL=zgiturl
+        REPLY=zgiturl
     else
         echo "No \`cgiturl' nor \`zgiturl' command is available, aborting."
         echo "The commands should be installed together with git-url."
         exit 1
     fi
 
-    if [[ -n "$GITURL_TOOL" && "$TOOL" != "$GITURL_TOOL" ]]; then
+    if [[ -n "$GITURL_TOOL" && "$REPLY" != "$GITURL_TOOL" ]]; then
         if ! hash "$GITURL_TOOL" 2>/dev/null 1>&2; then
             echo "The requested git-url backend \`$GITURL_TOOL' isn't available, aborting."
             echo "(backend requested by \$GITURL_TOOL variable)."
             exit 1
         fi
-        TOOL="$GITURL_TOOL"
+        REPLY="$GITURL_TOOL"
     fi
 }
 
@@ -52,4 +52,28 @@ get_repo_url() {
     text="${text#*:}"
     text=${text#"${text%%[! ]*}"}
     REPLY="$text"
+}
+
+#
+# Retrieves repository ref, either branch name or object ID
+#
+
+get_ref() {
+    local text
+    text=`git rev-parse --abbrev-ref HEAD 2>/dev/null`
+    if [[ "$text" = "HEAD" ]]; then
+        text=`git rev-parse HEAD 2>/dev/null`
+        if [[ ${#text} -gt 6 ]]; then
+            REPLY="${text:0:8}"
+            return 0
+        else
+            REPLY=""
+            return 1
+        fi
+    else
+        REPLY="$text"
+        return 0
+    fi
+    REPLY=""
+    return 1
 }

@@ -7,6 +7,17 @@ check_for_repo
 # Select backend
 declare TOOL
 choose_tool
+TOOL="$REPLY"
 
 # Read repository fetch URL
+declare URL
 get_repo_url
+URL="$REPLY"
+
+# Read current revision
+declare REF
+if ! get_ref; then
+    echo "Could not determine current ref / revision, aborting."
+    exit 1
+fi
+REF="$REPLY"
