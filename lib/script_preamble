@@ -13,6 +13,7 @@ show_help() {
     echo ""
     echo "-h    show this message"
     echo "-q    quiet mode (less output)"
+    echo "-n    no ansi colors"
     echo "-r    use custom revision like 'master' or '3a7abce' instead of fetching it from repository"
     echo ""
     echo "If gitu://... is passed, it will be decoded."
@@ -25,15 +26,23 @@ show_help() {
 OPTIND=1
 HELP=""
 QUIET=""
+NOANSI=""
 REVISION=""
 
-while getopts "hqr:" opt; do
+while getopts "hqnr:" opt; do
     case "$opt" in
-        h|\?)
+        \?)
+            echo "Error: incorrect option \`$opt'"
+            show_help
+            exit 1
+            ;;
+        h)
             show_help
             exit 0
             ;;
         q)  QUIET="-q"
+            ;;
+        n)  NOANSI="-n"
             ;;
         r)  REVISION="$OPTARG"
             ;;

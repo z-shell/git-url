@@ -27,4 +27,4 @@ else
 fi
 
 # Run backend to generate git-url
-"$TOOL" $QUIET --revision "$REF" "$URL"
+"$TOOL" $QUIET $NOANSI --revision "$REF" "$URL"
