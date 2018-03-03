@@ -32,7 +32,8 @@ REVISION=""
 while getopts "hqnr:" opt; do
     case "$opt" in
         \?)
-            echo "Error: incorrect option \`$opt'"
+            echo "Error: incorrect option, aborting."
+            echo ""
             show_help
             exit 1
             ;;

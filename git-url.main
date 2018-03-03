@@ -1,30 +1,51 @@
 # -*- mode: shell-script -*-
 # vim:ft=sh
 
-# Check if current directory is a Git repo
-check_for_repo
+declare INPUT="$1"
 
-# Select backend
-declare TOOL
-choose_tool
-TOOL="$REPLY"
+# No input (no decoding), encode current repository
+if [[ -z "$INPUT" ]]; then
+    # Check if current directory is a Git repo
+    check_for_repo
 
-# Read repository fetch URL
-declare URL
-get_repo_url
-URL="$REPLY"
+    # Select backend
+    declare TOOL
+    choose_tool
+    TOOL="$REPLY"
 
-# Read current revision
-if [[ -z "$REVISION" ]]; then
-    declare REF
-    if ! get_ref; then
-        echo "Could not determine current ref / revision, aborting."
-        exit 1
+    # Read repository fetch URL
+    declare URL
+    get_repo_url
+    URL="$REPLY"
+
+    # Read current revision
+    if [[ -z "$REVISION" ]]; then
+        declare REF
+        if ! get_ref; then
+            echo "Could not determine current ref / revision, aborting."
+            exit 1
+        fi
+        REF="$REPLY"
+    else
+        REF="$REVISION"
     fi
-    REF="$REPLY"
 else
-    REF="$REVISION"
+    # Select backend
+    declare TOOL
+    choose_tool
+    TOOL="$REPLY"
 fi
 
-# Run backend to generate git-url
-"$TOOL" $QUIET $NOANSI --revision "$REF" "$URL"
+if [[ -z "$INPUT" ]]; then
+    if [[ -z "$QUIET" ]]; then
+        echo "Encoding... INPUT is next paragraph:"
+    fi
+    # Run backend to generate git-url
+    "$TOOL" $QUIET $NOANSI --revision "$REF" "$URL"
+else
+    if [[ -z "$QUIET" ]]; then
+        echo "Decoding... OUTPUT is:"
+        echo ""
+    fi
+    "$TOOL" $QUIET $NOANSI -d "$INPUT"
+fi
