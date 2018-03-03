@@ -33,6 +33,12 @@ if [[ -z "$INPUT" ]]; then
     else
         REF="$REVISION"
     fi
+
+    declare MYPATH1 MYPATH2
+    if [[ -n "$INPATH" ]]; then
+        MYPATH1="--path"
+        MYPATH2="$INPATH"
+    fi
 else
     # Select backend
     declare TOOL
@@ -45,7 +51,7 @@ if [[ -z "$INPUT" ]]; then
         echo "Encoding... INPUT is next paragraph:"
     fi
     # Run backend to generate git-url
-    "$TOOL" $QUIET $NOANSI --revision "$REF" "$URL"
+    "$TOOL" $QUIET $NOANSI $MYPATH1 ${MYPATH2:+"$MYPATH2"} --revision "$REF" "$URL"
 else
     if [[ -z "$QUIET" ]]; then
         echo "Decoding... OUTPUT is:"
