@@ -8,6 +8,9 @@ DOC_DIR?=$(DESTDIR)$(PREFIX)/share/doc/$(NAME)
 
 all: zgiturl cgiturl git-url
 
+test:
+	@make -C test
+
 zgiturl:
 	make -C giturl
 
@@ -40,4 +43,4 @@ uninstall:
 clean:
 	rm -f git-url
 
-.PHONY: all install uninstall zgiturl cgiturl
+.PHONY: all install uninstall zgiturl cgiturl test
