@@ -1,6 +1,10 @@
 # -*- mode: shell-script -*-
 # vim:ft=sh
 
+#
+# Checks if current directory is a Git repository
+#
+
 check_for_repo() {
     local code
     git rev-parse --show-toplevel > /dev/null 2>&1
@@ -10,6 +14,12 @@ check_for_repo() {
 	exit $code
     fi
 }
+
+#
+# Chooses backend to use, from the 2 available:
+# - cgiturl
+# - zgiturl
+#
 
 choose_tool() {
     if hash cgiturl 2>/dev/null 1>&2; then
@@ -30,4 +40,16 @@ choose_tool() {
         fi
         TOOL="$GITURL_TOOL"
     fi
+}
+
+#
+# Retrieves repository `origin' URL
+#
+
+get_repo_url() {
+    local text
+    text=`git remote show -n origin 2>/dev/null | grep 'Fetch URL'`
+    text="${text#*:}"
+    text=${text#"${text%%[! ]*}"}
+    REPLY="$text"
 }

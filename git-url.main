@@ -1,7 +1,12 @@
 # -*- mode: shell-script -*-
 # vim:ft=sh
 
+# Check if current directory is a Git repo
 check_for_repo
 
+# Select backend
 declare TOOL
 choose_tool
+
+# Read repository fetch URL
+get_repo_url
