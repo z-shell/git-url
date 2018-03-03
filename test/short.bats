@@ -20,5 +20,5 @@ fi
   run ../git-url -qn gitu://ҝjȩMżEäḝЃȣϟṈӛŀї
   [ "$status" -eq 0 ]
   [ "${#lines[@]}" -eq 1 ]
-  [ "${lines[0]}" = "https://github.com/zdharma/git-url / rev:master" ]
+  [ "${lines[0]}" = "https://github.com/zdharma/git-url /  rev:master" ]
 }
