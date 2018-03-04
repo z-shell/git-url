@@ -1,0 +1,65 @@
+git-url(1)
+=========
+:compat-mode!:
+
+NAME
+----
+git-url - Generate, decode base-1024 Unicode urls
+
+SYNOPSIS
+--------
+git url [-h] [-q] [-r <revision>] [-u <url>] [-p <path>] [gitu://...]
+
+DESCRIPTION
+-----------
+
+This git subcommand uses base-1024 encoding and Huffman codes to compress
+repository fetch-URL, revision and optionally a file path into Unicode
+string utilizing Unicode letters.
+
+By using glyphs that are **letters**, not symbols it is guaranteed that
+double clicking on resulting URL (called *giturl*) will select whole
+string. If there would be a symbol, like `+` used in base-64 encoding,
+selection would stop before it.
+
+Other subcommand **git-guclone(1)** can be used to clone from giturl and
+checkout encoded revision, also decode and display encoded file path.
+
+OPTIONS
+-------
+
+-h::
+Displays usage information.
+
+-q::
+Quiet mode of operation, shows only resulting url or one-line decoded data.
+
+-r <revision>::
+Encoding - don't fetch current revision from repository, set it to **<revision>**.
+
+-u <url>::
+Encoding - don't fetch URL from repository, set it to **<url>**.
+
+-p <path>::
+Encoding - encode file path **<path>** in resulting giturl. Suggested is to
+use tilde **~** to separate multiple file names.
+
+[gitu://...]::
+Decoding - optional giturl for decoding, passing it means decoding is intended.
+The url doesn't have to be prefixed with gitu://, it can be also prefixed with //,
+and have no prefix at all.
+
+AUTHOR
+------
+
+Written by Sebastian Gniazdowski <sgniazdowski@gmail.com>
+
+REPORTING BUGS
+--------------
+
+https://github.com/zdharma/git-url/issues
+
+SEE ALSO
+--------
+
+git-guclone(1)
