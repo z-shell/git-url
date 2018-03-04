@@ -27,6 +27,8 @@ https://github.com/zdharma/git-urlmaster
 
 # Installation
 
+#### make install
+
 Recursively clone and run `make install`. Default install location is `/usr/local`. It
 can be overriden by setting `PREFIX`, e.g. `make install PREFIX=/opt`.
 
@@ -35,6 +37,8 @@ git clone --recursive https://github.com/zdharma/git-url
 cd git-url
 make install
 ```
+
+#### Zplugin
 
 If you use Zshell then there's a nice way of installing – via [Zplugin](https://github.com/zdharma/zplugin):
 
@@ -45,9 +49,11 @@ zplugin light zdharma/git-url
 
 To update, execute `zplugin update zdharma/git-url`. `$ZPFX` is `~/.zplugin/polaris` by default.
 
-The project uses two subprojects, one of them written in C++, second one in Zshell. They are the
-computation backends, and any of the two will work (choose with `export GITURL_TOOL=zgiturl` or
-`...=cgiturl`).
+#### Extra info
+
+The project uses two subprojects, one of them written in C++ (compiled with CMake), second
+one in Zshell. They are the computation backends, and any of the two will work (choose with
+`export GITURL_TOOL=zgiturl` or `...=cgiturl`).
 
 # Limitations
 
