@@ -13,6 +13,7 @@ In short:
     selects whole string, regardless if it's done in e.g.  Firefox, Chrome, iTerm2, xterm, etc.
  3. `git url ...` and `git guclone ...` understand giturls also without leading `gitu://`, and
     with leading `//`, so grabbing and using such url is easy.
+ 4. You can encode path to file in the giturl, to e.g. point someone to a location in project.
 
 Compare length of the above example giturl to the data it stores:
 
