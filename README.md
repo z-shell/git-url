@@ -6,12 +6,13 @@ This package adds two Git commands:
    `master` branch of this project),
  - **guclone** – clones given giturl, checkouts revision stored in this giturl.
 
-The giturls use 1024 **unicode letters** via base-1024 encoding, and also Huffman codes,
-to compress resulting string. Thanks to using glyphs that are **letters** (not symbols)
-double clicking on giturl always selects whole string, regardless if it's done in e.g.
-Firefox, Chrome, iTerm2, xterm, etc. `git url ...` and `git guclone ...` understand
-giturls also without leading `gitu://`, and with leading `//`, so grabbing and using
-such url is easy.
+In short:
+ 1. The giturls use 1024 **unicode letters** via base-1024 encoding, and also Huffman codes,
+    to compress resulting string.
+ 2. Thanks to using glyphs that are **letters** (not symbols) double clicking on giturl always
+    selects whole string, regardless if it's done in e.g.  Firefox, Chrome, iTerm2, xterm, etc.
+ 3. `git url ...` and `git guclone ...` understand giturls also without leading `gitu://`, and
+    with leading `//`, so grabbing and using such url is easy.
 
 Compare length of the above example giturl to the data it stores:
 
@@ -47,3 +48,27 @@ To update, execute `zplugin update zdharma/git-url`. `$ZPFX` is `~/.zplugin/pola
 The project uses two subprojects, one of them written in C++, second one in Zshell. They are the
 computation backends, and any of the two will work (choose with `export GITURL_TOOL=zgiturl` or
 `...=cgiturl`).
+
+# Limitations
+
+Only a subset of ASCII is encoded. This is sufficient for typical Github usage, where user and
+repository name are required to not use symbols, and where typical project branch names and
+file names are simple ASCII. Following characters can appear in input data – in the server,
+repository path, user name, revision, file path: [a-zA-Z0-9._~:/-].
+
+# Encoding file paths
+
+Use `-p` option to embed path to file in giturl:
+
+```sh
+% git url -p lib/common.sh
+Encoding... INPUT is next paragraph:
+
+Protocol:  https
+Site:      github.com
+Repo:      zdharma/zplugin.git
+Revision:  master
+File:      lib/common.sh
+
+gitu://ŬϽẝá0ȘéőϞȳƾǱϠѝŌěcḆΚṳȣϟṈӛŀї
+```
