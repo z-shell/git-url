@@ -6,10 +6,13 @@ all: man
 # MANUALS
 # Converted with a2x from asciidoc package
 
-man: git-url.1
+man: git-url.1 git-guclone.1
 
 git-url.1: git-url.adoc
 	a2x --verbose -L --doctype manpage --format manpage git-url.adoc
+
+git-guclone.1: git-guclone.adoc
+	a2x --verbose -L --doctype manpage --format manpage git-guclone.adoc
 
 # PDFS
 # Uses asciidoctor not a2x (i.e. not asciidoc)

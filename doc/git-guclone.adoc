@@ -1,0 +1,69 @@
+git-guclone(1)
+==============
+:compat-mode!:
+
+NAME
+----
+git-guclone - Clone repository specified by base-1024 Unicode giturl
+
+SYNOPSIS
+--------
+git guclone [regular clone options] gitu://...gcode... [target-directory]
+
+DESCRIPTION
+-----------
+
+Clone directly from base-1024 Unicode **giturl** (gitu://...), automatically
+checkout encoded revision. Also decode and display giturl-embedded file path,
+if it's there.
+
+The **gcode** can also be prefixed only with **//**. If target-directory is not
+given, then bare **gcode** can be passed (i.e. without gitu:// or // prefixes).
+
+OPTIONS
+-------
+
+-h::
+Displays usage information.
+
+any other option::
+Passed-through to regular **clone** subcommand, e.g. --depth 1, etc.
+
+[target-directory]::
+As for regular **clone** subcommand - optional target directory name.
+If not given, normal behavior will occur, i.e. directory will be based
+on URL.
+
+EXAMPLES
+--------
+
+Man-page viewer may not support Unicode so a variable is used below:
+
+ % git guclone $MY_UNICODE_GCODE
+ Cloning URL https://github.com/zdharma/git-url for revision images
+ Pointed file(s): doc/Makefile
+ 
+ Cloning into 'git-url'...
+ remote: Counting objects: 130, done.
+ remote: Compressing objects: 100% (101/101), done.
+ remote: Total 130 (delta 64), reused 91 (delta 28), pack-reused 0
+ Receiving objects: 100% (130/130), 112.87 KiB | 537.00 KiB/s, done.
+ Resolving deltas: 100% (64/64), done.
+ 
+ Checking out revision/reference images... OK
+ HEAD is at: images, created directory git-url
+
+AUTHOR
+------
+
+Written by Sebastian Gniazdowski <sgniazdowski@gmail.com>
+
+REPORTING BUGS
+--------------
+
+https://github.com/zdharma/git-url/issues
+
+SEE ALSO
+--------
+
+git-url(1)

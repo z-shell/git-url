@@ -1,0 +1,109 @@
+'\" t
+.\"     Title: git-guclone
+.\"    Author: [see the "AUTHOR" section]
+.\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
+.\"      Date: 03/04/2018
+.\"    Manual: \ \&
+.\"    Source: \ \&
+.\"  Language: English
+.\"
+.TH "GIT\-GUCLONE" "1" "03/04/2018" "\ \&" "\ \&"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
+git-guclone \- Clone repository specified by base\-1024 Unicode giturl
+.SH "SYNOPSIS"
+.sp
+git guclone [regular clone options] gitu://\&...gcode\&... [target\-directory]
+.SH "DESCRIPTION"
+.sp
+Clone directly from base\-1024 Unicode \fBgiturl\fR (gitu://\&...), automatically checkout encoded revision\&. Also decode and display giturl\-embedded file path, if it\(cqs there\&.
+.sp
+The \fBgcode\fR can also be prefixed only with \fB//\fR\&. If target\-directory is not given, then bare \fBgcode\fR can be passed (i\&.e\&. without gitu:// or // prefixes)\&.
+.SH "OPTIONS"
+.PP
+\-h
+.RS 4
+Displays usage information\&.
+.RE
+.PP
+any other option
+.RS 4
+Passed\-through to regular
+\fBclone\fR
+subcommand, e\&.g\&. \-\-depth 1, etc\&.
+.RE
+.PP
+[target\-directory]
+.RS 4
+As for regular
+\fBclone\fR
+subcommand \- optional target directory name\&. If not given, normal behavior will occur, i\&.e\&. directory will be based on URL\&.
+.RE
+.SH "EXAMPLES"
+.sp
+Man\-page viewer may not support Unicode so a variable is used below:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+% git guclone $MY_UNICODE_GCODE
+Cloning URL https://github\&.com/zdharma/git\-url for revision images
+Pointed file(s): doc/Makefile
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+Cloning into \*(Aqgit\-url\*(Aq\&.\&.\&.
+remote: Counting objects: 130, done\&.
+remote: Compressing objects: 100% (101/101), done\&.
+remote: Total 130 (delta 64), reused 91 (delta 28), pack\-reused 0
+Receiving objects: 100% (130/130), 112\&.87 KiB | 537\&.00 KiB/s, done\&.
+Resolving deltas: 100% (64/64), done\&.
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+Checking out revision/reference images\&.\&.\&. OK
+HEAD is at: images, created directory git\-url
+.fi
+.if n \{\
+.RE
+.\}
+.SH "AUTHOR"
+.sp
+Written by Sebastian Gniazdowski <sgniazdowski@gmail\&.com>
+.SH "REPORTING BUGS"
+.sp
+https://github\&.com/zdharma/git\-url/issues
+.SH "SEE ALSO"
+.sp
+git\-url(1)
