@@ -36,15 +36,15 @@ install: zgiturl cgiturl git-url git-guclone
 	$(INSTALL) -d $(DOC_DIR)
 	$(INSTALL) -d $(MAN_DIR)
 	cp git-url git-guclone $(BIN_DIR)
-	cp README.md LICENSE doc/git-url.adoc $(DOC_DIR)
-	cp doc/git-url.1 $(MAN_DIR)
+	cp README.md LICENSE doc/git-url.adoc doc/git-guclone.adoc $(DOC_DIR)
+	cp doc/git-url.1 doc/git-guclone.1 $(MAN_DIR)
 
 uninstall:
 	make -C cgiturl uninstall
 	make -C giturl uninstall
 	rm -f $(BIN_DIR)/git-url $(BIN_DIR)/git-guclone
-	rm -f $(DOC_DIR)/README.md $(DOC_DIR)/LICENSE
-	rm -f $(MAN_DIR)/git-url.1
+	rm -f $(DOC_DIR)/README.md $(DOC_DIR)/LICENSE $(DOC_DIR)/git-url.adoc $(DOC_DIR)/git-guclone.adoc
+	rm -f $(MAN_DIR)/git-url.1 $(MAN_DIR)/git-guclone.1
 	[ -d $(DOC_DIR) ] && rmdir $(DOC_DIR) || true
 	rm -f $(SHARE_DIR)/*
 	[ -d $(SHARE_DIR) ] && rmdir $(SHARE_DIR) || true
