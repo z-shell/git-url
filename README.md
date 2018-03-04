@@ -79,3 +79,6 @@ File:      lib/common.sh
 
 gitu://ŬϽẝá0ȘéőϞȳƾǱϠѝŌěcḆΚṳȣϟṈӛŀї
 ```
+
+Suggested is to use tilde `~` to separate multiple file paths. The project can be easily
+extended if this workaround will not suffice, to encode multiple file paths natively.
