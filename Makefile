@@ -20,7 +20,7 @@ giturl/zgiturl: giturl/giturl.main giturl/lib/codes_huffman giturl/lib/coding_fu
 cgiturl/cgiturl: cgiturl/main.cpp cgiturl/math_functions.cpp cgiturl/math_functions.h \
     		 cgiturl/util.cpp cgiturl/util.h cgiturl/coding_functions.cpp cgiturl/coding_functions.h \
 		 cgiturl/optionparser.h
-	@echo "[32m== Building cgiturl (C++) ==[0m" || true
+	@echo "[32m== Building cgiturl (C++, CMake) ==[0m" || true
 	@cd cgiturl && cmake -DCMAKE_INSTALL_PREFIX=$(PREFIX) . || true
 	@make -C cgiturl || true
 
@@ -37,10 +37,10 @@ git-guclone: lib/script_preamble2 lib/common git-guclone.main
 	chmod a+x git-guclone
 
 install: cgiturl/cgiturl giturl/zgiturl git-url git-guclone
-	@echo "[32m== Installing cgiturl ==[0m" || true
-	@make -C cgiturl install || true
 	@echo "[32m== Installing zgiturl ==[0m" || true
 	@make -C giturl install PREFIX=$(PREFIX) || true
+	@echo "[32m== Installing cgiturl ==[0m" || true
+	@make -C cgiturl install || true
 	@echo "[32m== Installing main scripts (git-url, git-guclone) ==[0m" || true
 	$(INSTALL) -d $(BIN_DIR)
 	$(INSTALL) -d $(SHARE_DIR)
@@ -51,10 +51,10 @@ install: cgiturl/cgiturl giturl/zgiturl git-url git-guclone
 	cp doc/git-url.1 doc/git-guclone.1 $(MAN_DIR)
 
 uninstall:
-	@echo "[32m== Unstalling cgiturl ==[0m" || true
-	@make -C cgiturl uninstall || true
 	@echo "[32m== Unstalling zgiturl ==[0m" || true
 	@make -C giturl uninstall || true
+	@echo "[32m== Unstalling cgiturl ==[0m" || true
+	@make -C cgiturl uninstall || true
 	@echo "[32m== Unstalling main scripts (git-url, git-guclone) ==[0m" || true
 	rm -f $(BIN_DIR)/git-url $(BIN_DIR)/git-guclone
 	rm -f $(DOC_DIR)/README.md $(DOC_DIR)/LICENSE $(DOC_DIR)/git-url.adoc $(DOC_DIR)/git-guclone.adoc
