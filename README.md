@@ -9,11 +9,15 @@ This package adds two Git commands:
 In short:
  1. The giturls use 1024 **unicode letters** via base-1024 encoding, and also Huffman codes,
     to compress resulting string.
+    - **SMALL SIZE**
  2. Thanks to using glyphs that are **letters** (not symbols) double clicking on giturl always
     selects whole string, regardless if it's done in e.g.  Firefox, Chrome, iTerm2, xterm, etc.
+    - **CALM SELECTING**
  3. `git url ...` and `git guclone ...` understand giturls also without leading `gitu://`, and
     with leading `//`, so grabbing and using such url is easy.
+    - **EASY USE**
  4. You can encode path to file in the giturl, to e.g. point someone to a location in project.
+    - **PACKED WITH DATA**
 
 Compare length of the above example giturl to the data it stores:
 
