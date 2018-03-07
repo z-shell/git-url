@@ -2,6 +2,7 @@
 /git-url
 /git-guclone
 /var
+/*.txt
 
 # Prerequisites
 *.d
