@@ -20,9 +20,9 @@ giturl/zgiturl: giturl/giturl.main giturl/lib/codes_huffman giturl/lib/coding_fu
 cgiturl/cgiturl: cgiturl/main.cpp cgiturl/math_functions.cpp cgiturl/math_functions.h \
     		 cgiturl/util.cpp cgiturl/util.h cgiturl/coding_functions.cpp cgiturl/coding_functions.h \
 		 cgiturl/optionparser.h
-	@[ x"${NO_CGITURL}" = x ] && echo "[32m== Building cgiturl (C++, CMake) ==[0m" || true
-	@cd cgiturl && [ x"${NO_CGITURL}" = x ] && cmake -DCMAKE_INSTALL_PREFIX=$(PREFIX) . || true
-	[ x"${NO_CGITURL}" = x ] && make -C cgiturl || true
+	@[ x"${GITURL_NO_CGITURL}" = x ] && echo "[32m== Building cgiturl (C++, CMake) ==[0m" || true
+	@cd cgiturl && [ x"${GITURL_NO_CGITURL}" = x ] && cmake -DCMAKE_INSTALL_PREFIX=$(PREFIX) . || true
+	[ x"${GITURL_NO_CGITURL}" = x ] && make -C cgiturl || true
 
 git-url: lib/script_preamble lib/common git-url.main
 	@echo "[32m== Building main script: git-url (Bash) ==[0m" || true
@@ -39,8 +39,8 @@ git-guclone: lib/script_preamble2 lib/common git-guclone.main
 install: cgiturl/cgiturl giturl/zgiturl git-url git-guclone
 	@echo "[32m== Installing zgiturl ==[0m" || true
 	@make -C giturl install PREFIX=$(PREFIX) || true
-	@[ x"${NO_CGITURL}" = x ] && echo "[32m== Installing cgiturl ==[0m" || true
-	[ x"${NO_CGITURL}" = x ] && make -C cgiturl install || true
+	@[ x"${GITURL_NO_CGITURL}" = x ] && echo "[32m== Installing cgiturl ==[0m" || true
+	[ x"${GITURL_NO_CGITURL}" = x ] && make -C cgiturl install || true
 	@echo "[32m== Installing main scripts (git-url, git-guclone) ==[0m" || true
 	$(INSTALL) -d $(BIN_DIR)
 	$(INSTALL) -d $(SHARE_DIR)
