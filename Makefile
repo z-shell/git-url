@@ -20,9 +20,9 @@ giturl/zgiturl: giturl/giturl.main giturl/lib/codes_huffman giturl/lib/coding_fu
 cgiturl/cgiturl: cgiturl/main.cpp cgiturl/math_functions.cpp cgiturl/math_functions.h \
     		 cgiturl/util.cpp cgiturl/util.h cgiturl/coding_functions.cpp cgiturl/coding_functions.h \
 		 cgiturl/optionparser.h
-	@echo "[32m== Building cgiturl (C++, CMake) ==[0m" || true
-	@cd cgiturl && cmake -DCMAKE_INSTALL_PREFIX=$(PREFIX) . || true
-	@make -C cgiturl || true
+	@[ x"${NO_CGITURL}" = x ] && echo "[32m== Building cgiturl (C++, CMake) ==[0m" || true
+	@cd cgiturl && [ x"${NO_CGITURL}" = x ] && cmake -DCMAKE_INSTALL_PREFIX=$(PREFIX) . || true
+	[ x"${NO_CGITURL}" = x ] && @make -C cgiturl || true
 
 git-url: lib/script_preamble lib/common git-url.main
 	@echo "[32m== Building main script: git-url (Bash) ==[0m" || true
