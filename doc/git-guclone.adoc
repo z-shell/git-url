@@ -42,14 +42,14 @@ Man-page viewer may not support Unicode so a variable is used below:
  % git guclone $MY_UNICODE_GCODE
  Cloning URL https://github.com/zdharma/git-url for revision images
  Pointed file(s): doc/Makefile
-  
+
  Cloning into 'git-url'...
  remote: Counting objects: 130, done.
  remote: Compressing objects: 100% (101/101), done.
  remote: Total 130 (delta 64), reused 91 (delta 28), pack-reused 0
  Receiving objects: 100% (130/130), 112.87 KiB | 537.00 KiB/s, done.
  Resolving deltas: 100% (64/64), done.
-  
+
  Checking out revision/reference images... OK
  HEAD is at: images, created directory git-url
 
