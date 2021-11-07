@@ -57,7 +57,7 @@ Written by Sebastian Gniazdowski <sgniazdowski@gmail.com>
 REPORTING BUGS
 --------------
 
-https://github.com/zdharma/git-url/issues
+https://github.com/z-shell/git-url/issues
 
 SEE ALSO
 --------
