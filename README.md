@@ -1,5 +1,11 @@
 # `GIT-URL`
 
+<p align="center">
+<a href="https://github.com/z-shell/git-url">
+<img src="https://github.com/z-shell/git-url/raw/images/z-git-url.png"/>
+</a>
+</p>
+
 ---
 
 This package adds two Git commands:
@@ -29,10 +35,6 @@ Compare length of the above example giturl to the data it stores:
 ҝjȩMżEäḝЃȣϟṈӛŀї
 https://github.com/z-shell/git-urlmaster
 ```
-
-## Screenshot
-
-![Screenshot](https://raw.githubusercontent.com/z-shell/git-url/images/git-url.png)
 
 ## Installation
 
