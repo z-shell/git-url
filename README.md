@@ -16,7 +16,7 @@
   - [In short:](#in-short)
 - [Installation](#installation)
   - [make install](#make-install)
-- [Zinit](#zinit)
+  - [Zinit](#zinit)
 - [Extra info](#extra-info)
   - [Limitations](#limitations)
   - [Encoding file paths](#encoding-file-paths)
@@ -61,7 +61,7 @@ cd git-url
 make install
 ```
 
-## Zinit
+### Zinit
 
 If you use Zshell then there's a nice way of installing – via [Zinit](https://github.com/z-shell/zinit):
 
