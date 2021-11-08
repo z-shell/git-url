@@ -12,8 +12,8 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Introduction](#introduction)
-  - [This package adds two Git commands:](#this-package-adds-two-git-commands)
-  - [In short:](#in-short)
+  - [This package adds two Git commands](#this-package-adds-two-git-commands)
+  - [In short](#in-short)
 - [Installation](#installation)
   - [make install](#make-install)
   - [Zinit](#zinit)
@@ -25,13 +25,13 @@
 
 ## Introduction
 
-### This package adds two Git commands:
+### This package adds two Git commands
 
 - `url` – generates so called _giturl_ which encodes repository fetch-URL and revision
   (can also hold paths to files); example giturl: `gitu://ҝjȩMżEäḝЃȣϟṈӛŀї` (points to `main` branch of this project),
 - `guclone` – clones given giturl, checkouts revision stored in this giturl.
 
-### In short:
+### In short
 
 1. The giturls use 1024 **unicode letters** via base-1024 encoding, and also Huffman codes, to compress resulting string.
    - **SMALL SIZE**
