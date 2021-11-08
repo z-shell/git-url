@@ -1,19 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [`GIT-URL`](#git-url)
-  - [Introduction](#introduction)
-    - [This package adds two Git commands:](#this-package-adds-two-git-commands)
-    - [In short:](#in-short)
-  - [Installation](#installation)
-    - [make install](#make-install)
-  - [Zinit](#zinit)
-  - [Extra info](#extra-info)
-    - [Limitations](#limitations)
-    - [Encoding file paths](#encoding-file-paths)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # `GIT-URL`
 
 <p align="center">
@@ -23,6 +7,21 @@
 </p>
 
 ---
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Introduction](#introduction)
+  - [This package adds two Git commands:](#this-package-adds-two-git-commands)
+  - [In short:](#in-short)
+- [Installation](#installation)
+  - [make install](#make-install)
+- [Zinit](#zinit)
+- [Extra info](#extra-info)
+  - [Limitations](#limitations)
+  - [Encoding file paths](#encoding-file-paths)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Introduction
 
