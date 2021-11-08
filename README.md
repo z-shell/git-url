@@ -8,14 +8,16 @@
 
 ---
 
-This package adds two Git commands:
+## Introduction
+
+### This package adds two Git commands:
 
 - **url** – generates so called _giturl_ which encodes repository fetch-URL and revision
   (can also hold paths to files); example giturl: `gitu://ҝjȩMżEäḝЃȣϟṈӛŀї` (points to
   `main` branch of this project),
 - **guclone** – clones given giturl, checkouts revision stored in this giturl.
 
-In short:
+### In short:
 
 1. The giturls use 1024 **unicode letters** via base-1024 encoding, and also Huffman codes,
    to compress resulting string.
@@ -31,7 +33,7 @@ In short:
 
 Compare length of the above example giturl to the data it stores:
 
-```shell
+```zsh
 ҝjȩMżEäḝЃȣϟṈӛŀї
 https://github.com/z-shell/git-urlmaster
 ```
@@ -43,7 +45,7 @@ https://github.com/z-shell/git-urlmaster
 Recursively clone and run `make install`. Default install location is `/usr/local`. It
 can be overriden by setting `PREFIX`, e.g. `make install PREFIX=/opt`.
 
-```sh
+```zsh
 git clone --recursive https://github.com/z-shell/git-url
 cd git-url
 make install
@@ -66,18 +68,18 @@ The project uses two subprojects, one of them written in C++ (compiled with CMak
 one in Zshell. They are the computation backends, and any of the two will work (choose with
 `export GITURL_TOOL=zgiturl` or `...=cgiturl`).
 
-## Limitations
+### Limitations
 
 Only a subset of ASCII is encoded. This is sufficient for typical Github usage, where user and
 repository name are required to not use symbols, and where typical project branch names and
 file names are simple ASCII. Following characters can appear in input data – in the server,
 repository path, user name, revision, file path: [a-zA-Z0-9._~:/-].
 
-## Encoding file paths
+### Encoding file paths
 
 Use `-p` option to embed path to file in giturl:
 
-```sh
+```zsh
 % git url -p lib/common.sh
 Encoding... INPUT is next paragraph:
 
