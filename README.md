@@ -8,6 +8,8 @@
 
 ---
 
+[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Z-shell%20-%20ZINIT%20plugin%20git-url&url=https://github.com/z-shell/git-url&hashtags=zsh,zinit,plugin,z-shell)
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
