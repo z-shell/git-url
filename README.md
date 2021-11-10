@@ -51,7 +51,7 @@ https://github.com/z-shell/git-urlmaster
 
 # Installation
 
-## make install
+## Install with `make`
 
 Recursively clone and run `make install`. Default install location is `/usr/local`. It can be overriden by setting `PREFIX`, e.g. `make install PREFIX=/opt`.
 
@@ -74,17 +74,17 @@ To update, execute `zinit update z-shell/git-url`. `$ZPFX` is `~/.zinit/polaris`
 
 ## Extra info
 
-The project uses two subprojects, one of them written in C++ (compiled with CMake), second one in Zshell.
+The project uses two subprojects, one of them written in **C++** (compiled with CMake), second one in **Zshell**.
 They are the computation backends, and any of the two will work (choose with `export GITURL_TOOL=zgiturl` or `...=cgiturl`).
 
-### Limitations
+### Known limitations
 
-Only a subset of ASCII is encoded. This is sufficient for typical Github usage, where user and
+Only a subset of **ASCII** is encoded. This is sufficient for typical Github usage, where user and
 repository name are required to not use symbols, and where typical project branch names and
-file names are simple ASCII. Following characters can appear in input data – in the server,
-repository path, user name, revision, file path: [a-zA-Z0-9._~:/-].
+file names are simple **ASCII**. Following characters can appear in input data – in the server,
+repository path, user name, revision, file path: `[a-zA-Z0-9._~:/-]`.
 
-### Encoding file paths
+### Encoding the file paths
 
 Use `-p` option to embed path to file in giturl:
 
