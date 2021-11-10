@@ -1,5 +1,3 @@
-# `GIT-URL`
-
 <p align="center">
 <a href="https://github.com/z-shell/git-url">
 <img src="https://github.com/z-shell/git-url/raw/images/z-git-url.png"/>
@@ -25,15 +23,15 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Introduction
+# Introduction
 
-### This package adds two Git commands
+## This package adds two Git commands
 
 - `url` – generates so called _giturl_ which encodes repository fetch-URL and revision
   (can also hold paths to files); example giturl: `gitu://ҝjȩMżEäḝЃȣϟṈӛŀї` (points to `main` branch of this project),
 - `guclone` – clones given giturl, checkouts revision stored in this giturl.
 
-### In short
+## In short
 
 1. The giturls use 1024 **unicode letters** via base-1024 encoding, and also Huffman codes, to compress resulting string.
    - **SMALL SIZE**
@@ -51,9 +49,9 @@ Compare length of the above example giturl to the data it stores:
 https://github.com/z-shell/git-urlmaster
 ```
 
-## Installation
+# Installation
 
-### make install
+## make install
 
 Recursively clone and run `make install`. Default install location is `/usr/local`. It can be overriden by setting `PREFIX`, e.g. `make install PREFIX=/opt`.
 
@@ -63,9 +61,9 @@ cd git-url
 make install
 ```
 
-### Zinit
+## [Zinit](https://github.com/z-shell/zinit)
 
-If you use Zshell then there's a nice way of installing – via [Zinit](https://github.com/z-shell/zinit):
+If you use [Zinit](https://github.com/z-shell/zinit), then there's a nice way of installing:
 
 ```zsh
 zinit ice as"program" pick"$ZPFX/bin/git-(url|guclone)" make"install PREFIX=$ZPFX"
