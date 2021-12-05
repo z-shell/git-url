@@ -13,13 +13,13 @@ test:
 	@make -C test
 
 giturl/zgiturl: giturl/giturl.main giturl/lib/codes_huffman giturl/lib/coding_functions giturl/lib/math_functions \
-    		giturl/lib/script_preamble giturl/lib/script_vars giturl/lib/sites_urls
+giturl/lib/script_preamble giturl/lib/script_vars giturl/lib/sites_urls
 	@echo "[32m== Building zgiturl (Zsh) ==[0m" || true
 	@make -C giturl || true
 
 cgiturl/cgiturl: cgiturl/main.cpp cgiturl/math_functions.cpp cgiturl/math_functions.h \
-    		 cgiturl/util.cpp cgiturl/util.h cgiturl/coding_functions.cpp cgiturl/coding_functions.h \
-		 cgiturl/optionparser.h
+cgiturl/util.cpp cgiturl/util.h cgiturl/coding_functions.cpp cgiturl/coding_functions.h \
+cgiturl/optionparser.h
 	@[ x"${GITURL_NO_CGITURL}" = x ] && echo "[32m== Building cgiturl (C++, CMake) ==[0m" || true
 	@cd cgiturl && [ x"${GITURL_NO_CGITURL}" = x ] && cmake -DCMAKE_INSTALL_PREFIX=$(PREFIX) . || true
 	[ x"${GITURL_NO_CGITURL}" = x ] && make -C cgiturl || true
