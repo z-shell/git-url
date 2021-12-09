@@ -37,7 +37,7 @@ Compare length of the above example giturl to the data it stores:
 
 ```zsh
 ҝjȩMżEäḝЃȣϟṈӛŀї
-https://github.com/z-shell/git-urlmaster
+https://github.com/z-shell/git-url
 ```
 
 ## Installation
@@ -80,16 +80,17 @@ repository path, user name, revision, file path: `[a-zA-Z0-9._~:/-]`.
 Use `-p` option to embed path to file in giturl:
 
 ```zsh
-% git url -p lib/common.sh
+❯ git-url
 Encoding... INPUT is next paragraph:
 
-Protocol:  https
-Site:      github.com
-Repo:      z-shell/zi.git
-Revision:  master
-File:      lib/common.sh
+Protocol: ssh
+User:     git
+Site:     github.com
+Repo:     z-shell/git-url.git
+Revision: main
 
-gitu://ŬϽẝá0ȘéőϞȳƾǱϠѝŌěcḆΚṳȣϟṈӛŀї
+gitu://VъöчŅϠѝŌĜEäḝЃȯŅǍǴḀЧ
+❯ git clone gitu://VъöчŅϠѝŌĜEäḝЃȯŅǍǴḀЧ
 ```
 
 Suggested is to use tilde `~` to separate multiple file paths. The project can be easily
