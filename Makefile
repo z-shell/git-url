@@ -47,7 +47,7 @@ install: cgiturl/cgiturl giturl/zgiturl git-url git-guclone
 	$(INSTALL) -d $(DOC_DIR)
 	$(INSTALL) -d $(MAN_DIR)
 	cp git-url git-guclone $(BIN_DIR)
-	cp README.md LICENSE doc/git-url.adoc doc/git-guclone.adoc $(DOC_DIR)
+	cp docs/README.md LICENSE doc/git-url.adoc doc/git-guclone.adoc $(DOC_DIR)
 	cp doc/git-url.1 doc/git-guclone.1 $(MAN_DIR)
 
 uninstall:
