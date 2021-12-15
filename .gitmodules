@@ -3,6 +3,6 @@ path = giturl
 url = https://github.com/z-shell/giturl
 ignore = untracked
 [submodule "cgiturl"]
-	path = cgiturl
-	url = git@github.com:z-shell/cgiturl
+path = cgiturl
+url = https://github.com/z-shell/cgiturl
 ignore = untracked
