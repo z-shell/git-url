@@ -3,7 +3,7 @@
 export GITURL_TOOL
 
 if [[ -z "$GITURL_TOOL" ]]; then
-    echo "You must set GITURL_TOOL to value like ../cgiturl/cgiturl or"
+    echo "You must set GITURL_TOOL to value like ../zgiturl/zgiturl or"
     echo "use Makefile which does this."
     exit 1
 fi
