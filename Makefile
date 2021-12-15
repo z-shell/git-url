@@ -7,7 +7,8 @@ SHARE_DIR?=$(DESTDIR)$(PREFIX)/share/$(NAME)
 DOC_DIR?=$(DESTDIR)$(PREFIX)/share/doc/$(NAME)
 MAN_DIR?=$(DESTDIR)$(PREFIX)/share/man/man1
 
-all: giturl/zgiturl cgiturl/cgiturl git-url git-guclone
+#cgiturl/cgiturl
+all: giturl/zgiturl git-url git-guclone
 
 test:
 	@make -C test
@@ -17,12 +18,12 @@ giturl/lib/script_preamble giturl/lib/script_vars giturl/lib/sites_urls
 	@echo "[32m== Building zgiturl (Zsh) ==[0m" || true
 	@make -C giturl || true
 
-cgiturl/cgiturl: cgiturl/main.cpp cgiturl/math_functions.cpp cgiturl/math_functions.h \
-cgiturl/util.cpp cgiturl/util.h cgiturl/coding_functions.cpp cgiturl/coding_functions.h \
-cgiturl/optionparser.h
-	@[ x"${GITURL_NO_CGITURL}" = x ] && echo "[32m== Building cgiturl (C++, CMake) ==[0m" || true
-	@cd cgiturl && [ x"${GITURL_NO_CGITURL}" = x ] && cmake -DCMAKE_INSTALL_PREFIX=$(PREFIX) . || true
-	[ x"${GITURL_NO_CGITURL}" = x ] && make -C cgiturl || true
+#cgiturl/cgiturl: cgiturl/main.cpp cgiturl/math_functions.cpp cgiturl/math_functions.h \
+#cgiturl/util.cpp cgiturl/util.h cgiturl/coding_functions.cpp cgiturl/coding_functions.h \
+#cgiturl/optionparser.h
+#	@[ x"${GITURL_NO_CGITURL}" = x ] && echo "[32m== Building cgiturl (C++, CMake) ==[0m" || true
+#	@cd cgiturl && [ x"${GITURL_NO_CGITURL}" = x ] && cmake -DCMAKE_INSTALL_PREFIX=$(PREFIX) . || true
+#	[ x"${GITURL_NO_CGITURL}" = x ] && make -C cgiturl || true
 
 git-url: lib/script_preamble lib/common git-url.main
 	@echo "[32m== Building main script: git-url (Bash) ==[0m" || true
@@ -39,8 +40,8 @@ git-guclone: lib/script_preamble2 lib/common git-guclone.main
 install: cgiturl/cgiturl giturl/zgiturl git-url git-guclone
 	@echo "[32m== Installing zgiturl ==[0m" || true
 	@make -C giturl install PREFIX=$(PREFIX) || true
-	@[ x"${GITURL_NO_CGITURL}" = x ] && echo "[32m== Installing cgiturl ==[0m" || true
-	[ x"${GITURL_NO_CGITURL}" = x ] && make -C cgiturl install || true
+#	@[ x"${GITURL_NO_CGITURL}" = x ] && echo "[32m== Installing cgiturl ==[0m" || true
+#	[ x"${GITURL_NO_CGITURL}" = x ] && make -C cgiturl install || true
 	@echo "[32m== Installing main scripts (git-url, git-guclone) ==[0m" || true
 	$(INSTALL) -d $(BIN_DIR)
 	$(INSTALL) -d $(SHARE_DIR)
@@ -53,8 +54,8 @@ install: cgiturl/cgiturl giturl/zgiturl git-url git-guclone
 uninstall:
 	@echo "[32m== Unstalling zgiturl ==[0m" || true
 	@make -C giturl uninstall || true
-	@echo "[32m== Unstalling cgiturl ==[0m" || true
-	@make -C cgiturl uninstall || true
+#	@echo "[32m== Unstalling cgiturl ==[0m" || true
+#	@make -C cgiturl uninstall || true
 	@echo "[32m== Unstalling main scripts (git-url, git-guclone) ==[0m" || true
 	rm -f $(BIN_DIR)/git-url $(BIN_DIR)/git-guclone
 	rm -f $(DOC_DIR)/README.md $(DOC_DIR)/LICENSE $(DOC_DIR)/git-url.adoc $(DOC_DIR)/git-guclone.adoc
