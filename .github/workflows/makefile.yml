@@ -22,14 +22,13 @@ jobs:
       run: |
         sudo apt-get update && sudo apt-get install zsh bats -yq
 
-    - name: Prepare zgiturl
+    - name: Run make
       run: |
+        make clean
         make all
-        ls -a giturl
-        ls -a
-        ./git-url
-        ./git-guclone
 
     - name: Run test
-      run: make test
-
+      run: |
+        ./git-url
+        ./git-guclone
+        make test
