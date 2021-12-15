@@ -65,8 +65,8 @@ uninstall:
 	rm -f $(SHARE_DIR)/*
 	[ -d $(SHARE_DIR) ] && rmdir $(SHARE_DIR) || true
 
+#	make -C cgiturl clean || true
 clean:
-	make -C cgiturl clean || true
 	make -C giturl clean || true
 	rm -f git-url git-guclone
 
