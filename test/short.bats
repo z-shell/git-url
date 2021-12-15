@@ -1,5 +1,4 @@
 #!/usr/bin/env bats
-# vim:ft=sh
 
 export GITURL_TOOL
 
@@ -13,26 +12,26 @@ fi
   run ../git-url -qn
   [ "$status" -eq 0 ]
   [ "${#lines[@]}" -eq 1 ]
-  [ "${lines[0]}" = "gitu://ҝjȩMżEäḝЃȣϟṈӛŀї" ]
+  [ "${lines[0]}" = "gitu://3ẦŅϠѝŌĜEäḝЃȯŅǍǴḀї" ]
 }
 
-@test "Decoding of git-url url gitu://ҝjȩMżEäḝЃȣϟṈӛŀї" {
-  run ../git-url -qn gitu://ҝjȩMżEäḝЃȣϟṈӛŀї
+@test "Decoding of git-url url gitu://3ẦŅϠѝŌĜEäḝЃȯŅǍǴḀї" {
+  run ../git-url -qn gitu://3ẦŅϠѝŌĜEäḝЃȯŅǍǴḀї
   [ "$status" -eq 0 ]
   [ "${#lines[@]}" -eq 1 ]
-  [ "${lines[0]}" = "https://github.com/zdharma/git-url /  rev:master" ]
+  [ "${lines[0]}" = "https://github.com/z-shell/git-url /  rev:main" ]
 }
 
-@test "Encoding of custom repository data" {
-  run ../git-url -qn -u https://github.com/zdharma/git-url.git -p lib/common -r gh-pages
-  [ "$status" -eq 0 ]
-  [ "${#lines[@]}" -eq 1 ]
-  [ "${lines[0]}" = "gitu://3Ầȓ1ṙȫК5ǳóŽĤöѝŌĜEäḝЃȣϟṈӛŀї" ]
-}
+#@test "Encoding of custom repository data" {
+#  run ../git-url -qn -u hhttps://github.com/z-shell/git-url -p lib/common -r gh-pages
+#  [ "$status" -eq 0 ]
+#  [ "${#lines[@]}" -eq 1 ]
+#  [ "${lines[0]}" = "gitu://3Ầȓ1ṙȫК5ǳóŽĤöѝŌĜEäḝЃȣϟṈӛŀї" ]
+#}
 
-@test "Decoding of git-url url gitu://3Ầȓ1ṙȫК5ǳóŽĤöѝŌĜEäḝЃȣϟṈӛŀї" {
-  run ../git-url -qn gitu://3Ầȓ1ṙȫК5ǳóŽĤöѝŌĜEäḝЃȣϟṈӛŀї
-  [ "$status" -eq 0 ]
-  [ "${#lines[@]}" -eq 1 ]
-  [ "${lines[0]}" = "https://github.com/zdharma/git-url.git /  rev:gh-pages /  file:lib/common" ]
-}
+#@test "Decoding of git-url url gitu://3Ầȓ1ṙȫК5ǳóŽĤöѝŌĜEäḝЃȣϟṈӛŀї" {
+#  run ../git-url -qn gitu://3Ầȓ1ṙȫК5ǳóŽĤöѝŌĜEäḝЃȣϟṈӛŀї
+#  [ "$status" -eq 0 ]
+#  [ "${#lines[@]}" -eq 1 ]
+#  [ "${lines[0]}" = "https://github.com/zdharma/git-url.git /  rev:gh-pages /  file:lib/common" ]
+#}
