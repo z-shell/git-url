@@ -37,7 +37,8 @@ git-guclone: lib/script_preamble2 lib/common git-guclone.main
 	cat lib/common git-guclone.main | egrep -v '(# vim|# -)' >> git-guclone
 	chmod a+x git-guclone
 
-install: cgiturl/cgiturl giturl/zgiturl git-url git-guclone
+# cgiturl/cgiturl
+install: giturl/zgiturl git-url git-guclone
 	@echo "[32m== Installing zgiturl ==[0m" || true
 	@make -C giturl install PREFIX=$(PREFIX) || true
 #	@[ x"${GITURL_NO_CGITURL}" = x ] && echo "[32m== Installing cgiturl ==[0m" || true
