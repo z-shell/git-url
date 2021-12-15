@@ -24,6 +24,7 @@ jobs:
       run: |
         git submodule update --init --recursive
         make
+        echo git remote -v
 
     - name: Run test
       run: make test
