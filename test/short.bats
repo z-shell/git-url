@@ -29,9 +29,9 @@ fi
   [ "${lines[0]}" = "gitu://ūo0ãƟṸŅǧÇfṎӕżEäḝЃȯŅǍǴḀї" ]
 }
 
-#@test "Decoding of git-url url gitu://3Ầȓ1ṙȫК5ǳóŽĤöѝŌĜEäḝЃȣϟṈӛŀї" {
-#  run ../git-url -qn gitu://3Ầȓ1ṙȫК5ǳóŽĤöѝŌĜEäḝЃȣϟṈӛŀї
-#  [ "$status" -eq 0 ]
-#  [ "${#lines[@]}" -eq 1 ]
-#  [ "${lines[0]}" = "https://github.com/zdharma/git-url.git /  rev:gh-pages /  file:lib/common" ]
-#}
+@test "Decoding of git-url url gitu://3Ầȓ1ṙȫК5ǳóŽĤöѝŌĜEäḝЃȯŅǍǴḀї" {
+  run ../git-url -qn gitu://3Ầȓ1ṙȫК5ǳóŽĤöѝŌĜEäḝЃȯŅǍǴḀї
+  [ "$status" -eq 0 ]
+  [ "${#lines[@]}" -eq 1 ]
+  [ "${lines[0]}" = "https://github.com/z-shell/git-url.git /  rev:gh-pages /  file:lib/common" ]
+}
