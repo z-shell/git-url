@@ -6,7 +6,7 @@
 
 [![Test Git-URL](https://github.com/z-shell/git-url/actions/workflows/makefile.yml/badge.svg?branch=main)](https://github.com/z-shell/git-url/actions/workflows/makefile.yml)
 
-> **Note:** `cgiturl` backend temporary disabled due to deprecation, `however` zgiturl backend tested and is fully functional.
+> **Note:** `cgiturl` backend temporary disabled due to deprecation, however `zgiturl` backend tested and is fully functional.
 
 - [Introduction](#introduction)
   - [This package adds two Git commands](#this-package-adds-two-git-commands)
