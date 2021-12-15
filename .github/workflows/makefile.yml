@@ -14,17 +14,18 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
+        ref: ${{ github.event.pull_request.head.sha }}
         token: ${{ secrets.GITHUB_TOKEN }}
-
+        submodules: 'recursive'
+    
     - name: Install dependencies
       run: |
         sudo apt-get update && sudo apt-get install zsh bats -yq
-
+        
     - name: Prepare
       run: |
-        git submodule update --init --recursive
         make
-        echo git remote -v
+        git remote -v
 
     - name: Run test
       run: make test
