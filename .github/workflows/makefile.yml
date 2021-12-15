@@ -17,8 +17,10 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update && sudo apt-get install zsh bats -yq
-    - name: Submodule init
-      run: git submodule init giturl
+    - name: Prepare
+      run: |
+        git submodule init giturl
+        make
 
     - name: Run test
       run: make test
