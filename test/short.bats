@@ -22,12 +22,12 @@ fi
   [ "${lines[0]}" = "https://github.com/z-shell/git-url /  rev:main" ]
 }
 
-#@test "Encoding of custom repository data" {
-#  run ../git-url -qn -u https://github.com/z-shell/git-url -p lib/common -r gh-pages
-#  [ "$status" -eq 0 ]
-#  [ "${#lines[@]}" -eq 1 ]
-#  [ "${lines[0]}" = "gitu://3Ầȓ1ṙȫК5ǳóŽĤöѝŌĜEäḝЃȣϟṈӛŀї" ]
-#}
+@test "Encoding of custom repository data" {
+  run ../git-url -qn -u https://github.com/z-shell/git-url -p lib/common -r gh-pages
+  [ "$status" -eq 0 ]
+  [ "${#lines[@]}" -eq 1 ]
+  [ "${lines[0]}" = "gitu://ūo0ãƟṸŅǧÇfṎӕżEäḝЃȯŅǍǴḀї" ]
+}
 
 #@test "Decoding of git-url url gitu://3Ầȓ1ṙȫК5ǳóŽĤöѝŌĜEäḝЃȣϟṈӛŀї" {
 #  run ../git-url -qn gitu://3Ầȓ1ṙȫК5ǳóŽĤöѝŌĜEäḝЃȣϟṈӛŀї

@@ -17,15 +17,16 @@ jobs:
         ref: ${{ github.event.pull_request.head.sha }}
         token: ${{ secrets.GITHUB_TOKEN }}
         submodules: 'recursive'
-    
+
     - name: Install dependencies
       run: |
         sudo apt-get update && sudo apt-get install zsh bats -yq
-        
+
     - name: Prepare
       run: |
         make
-        git remote -v
+        ./git-url
+        ./git-guclone
 
     - name: Run test
       run: make test
