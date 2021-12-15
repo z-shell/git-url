@@ -12,18 +12,18 @@ fi
   run ../git-url -qn
   [ "$status" -eq 0 ]
   [ "${#lines[@]}" -eq 1 ]
-  [ "${lines[0]}" = "gitu://3ẦŅϠѝŌĜEäḝЃȯŅǍǴḀї" ]
+  [ "${lines[0]}" = "gitu://ūcMżEäḝЃȯŅǍǴḀї" ]
 }
 
-@test "Decoding of git-url url gitu://3ẦŅϠѝŌĜEäḝЃȯŅǍǴḀї" {
-  run ../git-url -qn gitu://3ẦŅϠѝŌĜEäḝЃȯŅǍǴḀї
+@test "Decoding of git-url url gitu://ūcMżEäḝЃȯŅǍǴḀї" {
+  run ../git-url -qn gitu://ūcMżEäḝЃȯŅǍǴḀї
   [ "$status" -eq 0 ]
   [ "${#lines[@]}" -eq 1 ]
   [ "${lines[0]}" = "https://github.com/z-shell/git-url /  rev:main" ]
 }
 
 #@test "Encoding of custom repository data" {
-#  run ../git-url -qn -u hhttps://github.com/z-shell/git-url -p lib/common -r gh-pages
+#  run ../git-url -qn -u https://github.com/z-shell/git-url -p lib/common -r gh-pages
 #  [ "$status" -eq 0 ]
 #  [ "${#lines[@]}" -eq 1 ]
 #  [ "${lines[0]}" = "gitu://3Ầȓ1ṙȫК5ǳóŽĤöѝŌĜEäḝЃȣϟṈӛŀї" ]
