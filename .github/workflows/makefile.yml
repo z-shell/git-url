@@ -13,10 +13,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: test
-      run: git remote -v
-      
-#    - name: Install dependencies
-#      run: make
-      
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update && sudo apt-get install zsh bats -yq
+    - name: Submodule init
+      run: git submodule init giturl
+
+    - name: Run test
+      run: make test
+
